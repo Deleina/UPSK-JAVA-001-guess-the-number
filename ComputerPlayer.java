@@ -15,7 +15,7 @@ public class ComputerPlayer extends Player {
     }
 
 
-    //makeGuess(): Método de cada clase que herada de Player debe implementar.
+    //makeGuess(): Método de clase que herada de Player.
     @Override
     public int makeGuess() {
 

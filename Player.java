@@ -24,6 +24,7 @@ public abstract class Player {
     protected List<Integer> guesses = new ArrayList<>();
 
     public Player(String name) {
+
         this.name = name;
     }
 
@@ -32,11 +33,13 @@ public abstract class Player {
 
     //Devuelve el nombre de la jugadora.
     public String getName() {
+
         return name;
     }
 
     //Devuelve el historial de suposiciones de la jugadora.
     public List<Integer> getGuesses() {
+
         return guesses;
     }
 }

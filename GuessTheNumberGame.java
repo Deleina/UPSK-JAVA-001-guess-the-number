@@ -9,6 +9,9 @@
 
 
 import java.util.Random;
+import java.util.Scanner;
+
+import static java.lang.String.*;
 
 public class GuessTheNumberGame {
     private static Random random = new Random();
@@ -18,19 +21,35 @@ public class GuessTheNumberGame {
     public static void main(String[] args) {
         initializeGame();
         Player currentPlayer = null; // Inicializa el jugador actual
+
+        Scanner scanner= new Scanner(System.in);
+        System.out.print("Ingrese su nombre: ");
+        String playerName = scanner.nextLine();
+
+        String computerPlayerName = "Computadora";
+
         while (true) {
-            // Cambia entre jugadores en cada turno
-            currentPlayer = (currentPlayer == null || currentPlayer instanceof ComputerPlayer) ? new HumanPlayer() : new ComputerPlayer();
+            currentPlayer = (currentPlayer == null || currentPlayer instanceof ComputerPlayer) ? new HumanPlayer(playerName) : new ComputerPlayer();
             int guess = currentPlayer.makeGuess();
-            System.out.println(currentPlayer.getName() + " adivina: " + guess);
+
+            String playerNameToDisplay = currentPlayer instanceof ComputerPlayer ? computerPlayerName : playerName;
+
+            System.out.println(playerNameToDisplay + " adivina: " + guess);
+
             String result = checkGuess(currentPlayer, guess);
+
             System.out.println(result);
-            if (result.equals("¡Correcto!")) {
-                System.out.println(currentPlayer.getName() + " ganó. Número secreto: " + targetNumber);
+
+            if (result.equals("¡Correcto!" + "\uD83D\uDE01")) {
+                System.out.println(playerNameToDisplay + " ganó!" + "\uD83E\uDD73");
+                System.out.println("El numero secreto es : " + targetNumber);
                 break;
             }
         }
+
+        scanner.close();
     }
+
 
     static void initializeGame() {
         targetNumber = random.nextInt(100) + 1; // Número aleatorio entre 1 y 100

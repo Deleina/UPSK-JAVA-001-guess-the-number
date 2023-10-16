@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 public class GuessTheNumberGameTest {
     private GuessTheNumberGame game;
 
+    //@Before: anotación que  indica que el método setUp se ejecutará antes de cada prueba.
+    //setUp se ejecuta antes de cada prueba
     @Before
     public void setUp() {
         game = new GuessTheNumberGame();
